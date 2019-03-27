@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+
+android {
+  compileSdkVersion 28
+  defaultConfig {
+    applicationId "com.gkalal.simplemvvmdemo"
+    minSdkVersion 16
+    targetSdkVersion 28
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+  dataBinding {
+    enabled = true
+  }
+}
+
+dependencies {
+  implementation fileTree(dir: 'libs', include: ['*.jar'])
+  implementation 'androidx.appcompat:appcompat:1.1.0-alpha03'
+  implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+  // Lifecycle components
+  def lifecycleVersion = '2.1.0-alpha03'
+  implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+  implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+  annotationProcessor "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion"
+
+  // Glide
+  def glideVersion = '4.8.0'
+  implementation "com.github.bumptech.glide:glide:$glideVersion"
+  annotationProcessor "com.github.bumptech.glide:compiler:$glideVersion"
+
+  // Design support library
+  implementation 'com.google.android.material:material:1.1.0-alpha04'
+
+  // CircleImageView
+  implementation 'de.hdodenhof:circleimageview:2.2.0'
+}
